@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private StringBuilder builder = new StringBuilder();
+    private TextField textField;
     private double CurrentNum;
     private double secondNum;
     private int Operator;
@@ -29,10 +31,17 @@ public class Main extends Application {
         display = new Label("0");
         display.setPadding(new Insets(0,10,0,10));
         display.minWidthProperty().bind(vBox.widthProperty());
-        display.minHeightProperty().bind(vBox.heightProperty().divide(7).multiply(2));
+        display.minHeightProperty().bind(vBox.heightProperty().divide(7));
         display.setFont(Font.font("Tahoma",28));
         display.setAlignment(Pos.CENTER_RIGHT);
 
+        textField = new TextField("0");
+        textField.setPadding(new Insets(0,10,0,10));
+        textField.minWidthProperty().bind(vBox.widthProperty());
+        textField.minHeightProperty().bind(vBox.heightProperty().divide(7));
+        textField.setFont(Font.font("Tahoma",28));
+        textField.setAlignment(Pos.CENTER_RIGHT);
+        
         Button bt1 = new Button("1");
         Button bt2 = new Button("2");
         Button bt3 = new Button("3");
@@ -198,6 +207,7 @@ public class Main extends Application {
         btGrid.add(btNega, 0,4);
         btGrid.add(btEqual, 3,4);
 
+        vBox.getChildren().add(textField);
         vBox.getChildren().add(display);
         vBox.getChildren().add(btGrid);
 
