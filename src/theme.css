@@ -8,23 +8,23 @@
 #button:pressed {
     -fx-background-color: #606467;
 }
-#button-operator {
+#button-bright {
     -fx-background-color: #5f6267;
     -fx-background-radius: 0;
 }
-#button-operator:hover {
+#button-bright:hover {
     -fx-background-color: #6f7277;
 }
-#button-operator:pressed {
+#button-bright:pressed {
     -fx-background-color: #7d8085;
 }
-#button-equal {
+#button-blue {
     -fx-background-color: #4286f5;
     -fx-background-radius: 0;
 }
-#button-equal:hover {
+#button-blue:hover {
     -fx-background-color: #3f7ee8;
 }
-#button-equal:pressed {
+#button-blue:pressed {
     -fx-background-color: #3c77db;
 }

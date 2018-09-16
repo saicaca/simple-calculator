@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -29,7 +30,7 @@ public class Main extends Application {
         display = new Label("0");
         display.setPadding(new Insets(0,10,0,10));
         display.minWidthProperty().bind(vBox.widthProperty());
-        display.minHeightProperty().bind(vBox.heightProperty().divide(7).multiply(2));
+        display.minHeightProperty().bind(vBox.heightProperty().divide(7).divide(2));
         display.setFont(Font.font("Tahoma",28));
         display.setAlignment(Pos.CENTER_RIGHT);
 
@@ -54,7 +55,8 @@ public class Main extends Application {
         Button btNega = new Button("±");
         Button btEqual = new Button("=");
 
-        Button[] btList = {bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, btPlus, btMinus, btMultiply, btDivide, btRoot, btBack, btClear, btDot, btNega, btEqual};
+        Button[] btList = {bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0, btPlus, btMinus,
+                btMultiply, btDivide, btRoot, btBack, btClear, btDot, btNega, btEqual};
         for (Button bt: btList) {
             bt.minWidthProperty().bind(vBox.widthProperty().divide(4));
             bt.minHeightProperty().bind(vBox.heightProperty().divide(7));
@@ -74,16 +76,6 @@ public class Main extends Application {
                 display.setText(builder.toString());
             });
         }
-
-        Button[] leftBt = {bt0, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, btRoot, btBack, btClear, btDot, btNega};
-        for (Button bt: leftBt) {
-            bt.setId("button");
-        }
-        Button[] rightBt = {btPlus, btMinus, btMultiply, btDivide};
-        for (Button bt: rightBt) {
-            bt.setId("button-operator");
-        }
-        btEqual.setId("button-equal");
 
         btPlus.setOnAction(event ->  {
             computed = false;
@@ -202,7 +194,17 @@ public class Main extends Application {
         vBox.getChildren().add(btGrid);
 
         Scene scene = new Scene(vBox);
-        scene.getStylesheets().add(getClass().getResource("theme.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("theme.css").toExternalForm());   // 设定 css
+
+        Button[] leftBt = {bt0, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, btRoot, btBack, btClear, btDot, btNega};
+        for (Button bt: leftBt) {
+            bt.setId("button");
+        }
+        Button[] rightBt = {btPlus, btMinus, btMultiply, btDivide};
+        for (Button bt: rightBt) {
+            bt.setId("button-bright");
+        }
+        btEqual.setId("button-blue");
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Calculator");
